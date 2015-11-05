@@ -1,0 +1,154 @@
+public class MyLinkedList {
+	Node header;
+	int listSize;
+
+	MyLinkedList()
+	{
+		this.header=null;
+		this.listSize=0;
+		
+	}
+		
+	public void addElement(Node node)
+	{
+		
+		if(this.listSize==0)
+		{
+			header=node;
+			
+		}
+		else
+		{
+			Node n=this.header;
+	    	while( n.getNext() !=null )
+		    	n=n.getNext();
+		     n.setNext(node);
+		}   
+		    
+		this.listSize++;
+		
+	}
+	
+	public Node getHeader() {
+		return header;
+	}
+	public void setHeader(Node header) {
+		this.header = header;
+	}
+	public int getListSize() {
+		return listSize;
+	}
+	public void setListSize(int listSize) {
+		this.listSize = listSize;
+	}
+	public void printList()
+	{
+		Node n=this.header;
+		if(this.listSize == 0)
+		{
+			System.out.println("Empty List...");
+		}
+		else
+		{
+	    	while(n != null)
+	    	{		
+		       System.out.println(" [ "+n.data+" ]");
+		       n=n.next;
+	    	}
+		}
+	}
+	public void printReverse(Node node)
+	{
+		if(node == null)
+			return;
+		else
+			printReverse(node.next);
+		System.out.println(" [ "+node.data+" ]");
+	}
+    public void printAlternative(Node node)
+    {
+    	if(node == null)
+    		return;
+    	System.out.println(" [ "+node.data+" ]");
+    	if(node.getNext() != null)
+    		printAlternative(node.next.getNext());
+    	
+    }
+    public void printAlternateInv(Node node)
+    {
+    	if(node == null)
+    		return;
+    	System.out.println(" [ "+node.data+" ]");
+    	if(node.getNext() != null)
+    		printAlternative(node.next.getNext());
+    	System.out.println(" [ "+node.data+" ]");
+    	
+    }
+    public Node reverseList(Node header)
+    {
+    	 Node currNode, prevNode,nextNode;
+         prevNode = header;
+         currNode = header.next;
+         while(currNode != null)
+        {
+             nextNode = currNode.next;
+             currNode.next = prevNode;
+             prevNode = currNode;
+             currNode = nextNode;
+            
+         }
+        
+         header.next = null;
+         header=prevNode;
+        
+         return header;
+    	
+    }
+    public void kthElementFromLast(int k)
+    {
+    	Node n=this.getHeader();
+    	Node p=this.getHeader();
+    	
+    	for(int i=1;n !=null;i++)
+    	{
+    		n=n.next;
+    		if(i>k)
+    			p=p.next;
+    	}
+    	System.out.println(" [ "+p.data+" ]");
+    }
+     
+    public void swapAlternate(Node head)
+    {
+    	Node n=head;
+    	Node tmp,p;
+    	if(this.getListSize() > 1)
+    	{
+	    	
+	    	this.setHeader(n.next);
+	    	
+	    	while(n.next != null)
+	    	{
+	    		tmp=n;
+	    		p=n.next;
+	    		n.next=p.next;
+	    	    p.next=n;
+	    	    tmp=n.next;
+	    	    if(tmp ==null )
+	    	    	break;
+	    	    if(tmp.next !=null)
+	    	        n.next=n.next.next;
+	    	    n=tmp;
+	    	    
+	    		
+	    	}
+    	}
+    	else
+    		System.out.println("Does not qualify for alternate swap");
+        
+        
+    }
+    
+    
+	 
+}
