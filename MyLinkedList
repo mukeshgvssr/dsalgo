@@ -1,3 +1,4 @@
+
 public class MyLinkedList {
 	Node header;
 	int listSize;
@@ -148,7 +149,24 @@ public class MyLinkedList {
         
         
     }
-    
+    public boolean findFloydCircle(Node head)
+    {
+         Node fastPtr = head, slowPtr=head;
+         while(slowPtr!= null && fastPtr !=null)
+         {
+        	 fastPtr=fastPtr.next;
+        	 if(fastPtr ==  slowPtr)
+        		  return true;
+        	 if(fastPtr== null)
+        		  return false;
+        	 fastPtr=fastPtr.next;
+        	 if(fastPtr ==  slowPtr)
+        		  return true;
+        	 slowPtr=slowPtr.next;
+        	 
+         }
+         return false;
+    }
     
 	 
 }
