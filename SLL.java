@@ -30,6 +30,8 @@ public class SLL {
 		System.out.println(" Swap nodes in linked list");
 		ml.swapAlternate(ml.getHeader());
 		
+		System.out.println("Cyclic Linked list "+ml.findFloydCircle(ml.getHeader()));
+		
 		ml.printList();
 
 	}
