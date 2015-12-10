@@ -50,14 +50,16 @@ public class SnakesNLadders {
         int dice=getDiceValue();
         next=next+dice;
         System.out.print("Dice:"+dice+":");
-        next= board.containsKey(next) ? (Integer) board.get(next) : next  ;
-        if(Math.abs(next-val) > 6)
+        if(board.containsKey(next))
         {
-            if(next > val)
+        	int valu=next;
+        	next=(Integer) board.get(next);
+            if(next > valu)
                 snakeRLader="L";
             else
                 snakeRLader="S";
         }
+        
         int result = ( next <= 100) ? next : val ;
         display(player,result,snakeRLader);
         return result;
